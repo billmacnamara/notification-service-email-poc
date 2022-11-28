@@ -19,6 +19,7 @@
 		<java.version>17</java.version>
 		<openapi.ui.version>1.6.9</openapi.ui.version>
 		<swagger-annotations.version>2.2.1</swagger-annotations.version>
+		<metrics.model.version>0.0.83</metrics.model.version>
 	</properties>
 
 	<dependencies>
@@ -63,6 +64,12 @@
 			<artifactId>swagger-annotations</artifactId>
 			<version>${swagger-annotations.version}</version>
 		</dependency>
+
+		<!--dependency>
+			<groupId>com.zinkworks</groupId>
+			<artifactId>metrics-model</artifactId>
+			<version>${metrics.model.version}</version>
+		</dependency-->
 
 	</dependencies>
 

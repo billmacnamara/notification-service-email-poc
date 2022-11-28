@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.zinkworks.notification.service.email.poc.constants.EmailServiceConstants.BASE_URL;
+
 @RestController
-@RequestMapping(path = "/api/v1/email")
+@RequestMapping(path = BASE_URL)
 @CommonsLog
 public class EmailController {
 

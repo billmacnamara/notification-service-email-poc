@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  alarm-service:
+    image: notification-service-email-poc:0.0.1-SNAPSHOT
+    ports:
+      - "8085:8085"
+    environment:
+      - MAIL_HOST="smtp.mailtrap.io"
+      - MAIL_PORT=2525
+      - MAIL_USERNAME=a7a6d26848f118
+      - MAIL_PASSWORD=0e93db205f9976
+      - DEBUG=false
