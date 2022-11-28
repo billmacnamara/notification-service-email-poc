@@ -7,6 +7,5 @@ public class EmailNotificationRequest {
 
     String[] to;
     EmailNotification emailNotification;
-    EmailAttachment attachment;
 
 }

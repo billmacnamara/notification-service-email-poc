@@ -17,7 +17,7 @@ public class EmailProperties {
     private Integer mailServerPort;
     private String mailServerUsername;
     private String mailServerPassword;
-    private String mailAddress;
+    private String mailSender;
     private boolean debug;
 
 }
