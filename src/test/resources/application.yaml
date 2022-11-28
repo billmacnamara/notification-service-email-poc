@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+email:
+  mailServerHost: ${MAIL_HOST:smtp.mailtrap.io}
+  mailServerPort: ${MAIL_PORT:2525}
+  mailServerUsername: ${MAIL_USERNAME:a7a6d26848f118}
+  mailServerPassword: ${MAIL_PASSWORD:0e93db205f9976}
+  debug: true
