@@ -38,21 +38,21 @@ public class EmailServiceTest {
     @Test
     public void testSendEmailSingleRecipient() {
         EmailNotificationRequest request =
-                TestUtils.getMockEmailNotificationRequest(new String[]{TestUtils.TEST_EMAIL1});
+                TestUtils.getEmailNotificationRequest(new String[]{TestUtils.TEST_EMAIL1});
         this.emailService.sendEmail(request);
     }
 
     @Test
     public void testSendEmailMultipleRecipients() {
         EmailNotificationRequest request =
-                TestUtils.getMockEmailNotificationRequest(new String[]{TestUtils.TEST_EMAIL1, TestUtils. TEST_EMAIL2});
+                TestUtils.getEmailNotificationRequest(new String[]{TestUtils.TEST_EMAIL1, TestUtils. TEST_EMAIL2});
         this.emailService.sendEmail(request);
     }
 
     @Test
     public void testSendEmailNoRecipient() {
         EmailNotificationRequest request =
-                TestUtils.getMockEmailNotificationRequest(new String[]{});
+                TestUtils.getEmailNotificationRequest(new String[]{});
         assertThrows(MissingRecipientException.class, () -> {
             this.emailService.sendEmail(request);
         });

@@ -4,7 +4,7 @@ services:
   alarm-service:
     image: notification-service-email-poc:0.0.1-SNAPSHOT
     ports:
-      - "8085:8085"
+      - "8080:8080"
     environment:
       - MAIL_HOST="smtp.mailtrap.io"
       - MAIL_PORT=2525
