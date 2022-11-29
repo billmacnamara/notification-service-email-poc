@@ -11,6 +11,7 @@ public class TestUtils {
 
     public static final String TEST_EMAIL1 = "testuser123@zinkworks.com";
     public static final String TEST_EMAIL2 = "testuserABC@zinkworks.com";
+    public static final String INVALID_EMAIL = "testuserABCzinkworkscom";
 
     public static EmailNotificationRequest getEmailNotificationRequest(String[] to) {
         EmailNotificationRequest request = new EmailNotificationRequest();

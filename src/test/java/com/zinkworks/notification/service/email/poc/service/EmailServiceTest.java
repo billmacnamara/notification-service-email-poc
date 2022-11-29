@@ -5,6 +5,7 @@ import com.zinkworks.notification.service.email.poc.exception.MissingRecipientEx
 import com.zinkworks.notification.service.email.poc.model.EmailNotificationRequest;
 import com.zinkworks.notification.service.email.poc.properties.EmailProperties;
 import com.zinkworks.notification.service.email.poc.service.impl.EmailServiceImpl;
+import jakarta.validation.Validator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -26,6 +27,8 @@ public class EmailServiceTest {
     private JavaMailSender emailSender;
     @Mock
     private EmailProperties emailProperties;
+    @Mock
+    private Validator validator;
 
     @InjectMocks
     EmailServiceImpl emailService;
@@ -53,9 +56,7 @@ public class EmailServiceTest {
     public void testSendEmailNoRecipient() {
         EmailNotificationRequest request =
                 TestUtils.getEmailNotificationRequest(new String[]{});
-        assertThrows(MissingRecipientException.class, () -> {
-            this.emailService.sendEmail(request);
-        });
+        assertThrows(MissingRecipientException.class, () -> this.emailService.sendEmail(request));
     }
 
 }

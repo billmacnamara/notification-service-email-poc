@@ -52,6 +52,14 @@ public class EmailControllerTest {
         assertEquals(HttpStatus.BAD_REQUEST.value(), mvcResult.getResponse().getStatus());
     }
 
+    @Test
+    public void testSendEmail_InvalidEmailAddressError() throws Exception {
+        EmailNotificationRequest request =
+                TestUtils.getEmailNotificationRequest(new String[]{TestUtils.INVALID_EMAIL});
+        MvcResult mvcResult = getEmailNotification(this.mockMvc, request);
+        assertEquals(HttpStatus.BAD_REQUEST.value(), mvcResult.getResponse().getStatus());
+    }
+
     private MvcResult getEmailNotification(final MockMvc mockMvc, final EmailNotificationRequest request) throws Exception {
         String url = EmailServiceConstants.BASE_URL;
         String requestJson = TestUtils.objectToJson(request);

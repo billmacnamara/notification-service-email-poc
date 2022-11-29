@@ -6,6 +6,7 @@ import com.zinkworks.notification.service.email.poc.service.impl.EmailServiceImp
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,7 +35,7 @@ public class EmailController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Email notification sent successfully")
     })
-    public ResponseEntity<EmailNotificationRequest> sendMail(@RequestBody EmailNotificationRequest request) {
+    public ResponseEntity<EmailNotificationRequest> sendMail(@Valid @RequestBody EmailNotificationRequest request) {
         this.emailService.sendEmail(request);
         return new ResponseEntity<>(request, HttpStatus.OK);
     }
