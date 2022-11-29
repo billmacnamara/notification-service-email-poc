@@ -1,11 +1,13 @@
 package com.zinkworks.notification.service.email.poc.configuration;
 
 import com.zinkworks.notification.service.email.poc.properties.EmailProperties;
+import jakarta.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import java.util.Properties;
 
@@ -34,6 +36,11 @@ public class EmailConfiguration {
         props.put("mail.debug", emailProperties.isDebug());
 
         return emailSender;
+    }
+
+    @Bean
+    public Validator validator() {
+        return new LocalValidatorFactoryBean();
     }
 
 }

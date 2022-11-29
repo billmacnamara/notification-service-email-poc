@@ -27,8 +27,6 @@ public class EmailServiceTest {
     private JavaMailSender emailSender;
     @Mock
     private EmailProperties emailProperties;
-    @Mock
-    private Validator validator;
 
     @InjectMocks
     EmailServiceImpl emailService;
