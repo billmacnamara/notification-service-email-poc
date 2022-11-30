@@ -3,9 +3,7 @@ package com.zinkworks.notification.service.email.poc.service;
 import com.zinkworks.notification.service.email.poc.TestUtils;
 import com.zinkworks.notification.service.email.poc.exception.MissingRecipientException;
 import com.zinkworks.notification.service.email.poc.model.EmailNotificationRequest;
-import com.zinkworks.notification.service.email.poc.properties.EmailProperties;
 import com.zinkworks.notification.service.email.poc.service.impl.EmailServiceImpl;
-import jakarta.validation.Validator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -25,10 +23,6 @@ public class EmailServiceTest {
 
     @Mock
     private JavaMailSender emailSender;
-    @Mock
-    private EmailProperties emailProperties;
-    @Mock
-    private Validator validator;
 
     @InjectMocks
     EmailServiceImpl emailService;

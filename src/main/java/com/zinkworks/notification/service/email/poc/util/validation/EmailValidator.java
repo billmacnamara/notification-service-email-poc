@@ -17,14 +17,13 @@ public class EmailValidator implements ConstraintValidator<ValidEmail, String[]>
 
     @Override
     public boolean isValid(String[] emails, ConstraintValidatorContext context) {
-        boolean valid = true;
         for (String email : emails) {
-            valid = (validateEmail(email));
+            boolean valid = validateEmail(email);
             if (!valid) {
-                log.error("Invalid email address was supplied: " + email);
+                log.warn("Invalid email address was supplied: " + email);
             }
         }
-        return valid;
+        return true;
     }
 
     private boolean validateEmail(final String emailAddress) {
