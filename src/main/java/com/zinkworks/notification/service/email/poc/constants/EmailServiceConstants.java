@@ -9,4 +9,6 @@ public class EmailServiceConstants {
 
     public static final String SENDING_ADDRESS = "ndo.support@zinkworks.com";
 
+    public static final String EMAIL_TEMPLATE = "email.html";
+
 }

@@ -13,12 +13,24 @@ public class TestUtils {
     public static final String TEST_EMAIL2 = "testuserABC@zinkworks.com";
     public static final String INVALID_EMAIL = "testuserABCzinkworkscom";
 
-    public static EmailNotificationRequest getEmailNotificationRequest(String[] to) {
+    public static EmailNotificationRequest getPlaintextEmailNotificationRequest(String[] to) {
         EmailNotificationRequest request = new EmailNotificationRequest();
         request.setTo(to);
         EmailNotification notification = new EmailNotification();
         notification.setSubject("Test");
-        notification.setBody("This is a test email");
+        notification.setMessage("This is a test email");
+        request.setEmailNotification(notification);
+
+        return request;
+    }
+
+    public static EmailNotificationRequest getHtmlEmailNotificationRequest(String[] to) {
+        EmailNotificationRequest request = new EmailNotificationRequest();
+        request.setTo(to);
+        EmailNotification notification = new EmailNotification();
+        notification.setSubject("Test");
+        notification.setMessage("This is a test email");
+        notification.setNotificationType("INFO");
         request.setEmailNotification(notification);
 
         return request;

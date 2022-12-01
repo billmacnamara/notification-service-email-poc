@@ -20,6 +20,7 @@
 		<openapi.ui.version>1.6.9</openapi.ui.version>
 		<swagger-annotations.version>2.2.1</swagger-annotations.version>
 		<metrics.model.version>0.0.83</metrics.model.version>
+		<org.thymeleaf-version>3.1.0.RELEASE</org.thymeleaf-version>
 	</properties>
 
 	<dependencies>
@@ -69,6 +70,22 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf</artifactId>
+			<version>${org.thymeleaf-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring5</artifactId>
+			<version>${org.thymeleaf-version}</version>
 		</dependency>
 
 		<!--dependency>

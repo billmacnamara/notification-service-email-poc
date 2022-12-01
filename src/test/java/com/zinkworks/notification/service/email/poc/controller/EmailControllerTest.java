@@ -27,23 +27,39 @@ public class EmailControllerTest {
     @Test
     public void testSendEmailSingleRecipient() throws Exception {
         EmailNotificationRequest request =
-                TestUtils.getEmailNotificationRequest(new String[]{TestUtils.TEST_EMAIL1});
+                TestUtils.getPlaintextEmailNotificationRequest(new String[]{TestUtils.TEST_EMAIL1});
         MvcResult mvcResult = getEmailNotification(this.mockMvc, request);
         assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
     }
 
     @Test
-    public void testSendEmailMultipleRecipients() throws Exception {
+    public void testSendPlaintextEmailMultipleRecipients() throws Exception {
         EmailNotificationRequest request =
-                TestUtils.getEmailNotificationRequest(new String[]{TestUtils.TEST_EMAIL1, TestUtils. TEST_EMAIL2});
+                TestUtils.getPlaintextEmailNotificationRequest(new String[]{TestUtils.TEST_EMAIL1, TestUtils. TEST_EMAIL2});
         MvcResult mvcResult = getEmailNotification(this.mockMvc, request);
+        assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
+    }
+
+    @Test
+    public void testSendHtmlEmailSingleRecipient() throws Exception {
+        EmailNotificationRequest request =
+                TestUtils.getHtmlEmailNotificationRequest(new String[]{TestUtils.TEST_EMAIL1});
+        MvcResult mvcResult = getHtmlEmailNotification(this.mockMvc, request);
+        assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
+    }
+
+    @Test
+    public void testSendHtmlEmailMultipleRecipients() throws Exception {
+        EmailNotificationRequest request =
+                TestUtils.getHtmlEmailNotificationRequest(new String[]{TestUtils.TEST_EMAIL1, TestUtils. TEST_EMAIL2});
+        MvcResult mvcResult = getHtmlEmailNotification(this.mockMvc, request);
         assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
     }
 
     @Test
     public void testSendEmail_noRecipientError() throws Exception {
         EmailNotificationRequest request =
-                TestUtils.getEmailNotificationRequest(new String[]{});
+                TestUtils.getPlaintextEmailNotificationRequest(new String[]{});
         MvcResult mvcResult = getEmailNotification(this.mockMvc, request);
         assertEquals(HttpStatus.BAD_REQUEST.value(), mvcResult.getResponse().getStatus());
     }
@@ -60,6 +76,16 @@ public class EmailControllerTest {
 
     private MvcResult getEmailNotification(final MockMvc mockMvc, final EmailNotificationRequest request) throws Exception {
         String url = EmailServiceConstants.BASE_URL;
+        String requestJson = TestUtils.objectToJson(request);
+
+        return mockMvc.perform(
+                MockMvcRequestBuilders.post(url)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .content(requestJson)).andReturn();
+    }
+
+    private MvcResult getHtmlEmailNotification(final MockMvc mockMvc, final EmailNotificationRequest request) throws Exception {
+        String url = EmailServiceConstants.BASE_URL + "/html";
         String requestJson = TestUtils.objectToJson(request);
 
         return mockMvc.perform(
